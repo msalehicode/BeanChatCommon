@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(OpenSSL REQUIRED)
 
 add_library(BeanChatCommon STATIC
 
@@ -26,14 +27,16 @@ add_library(BeanChatCommon STATIC
 
     crypto/Crypto.h
     crypto/Crypto.cpp
-    crypto/Identity.h
 )
 
 target_link_libraries(
     BeanChatCommon
     PUBLIC
         Qt6::Core
+        OpenSSL::Crypto
 )
+
+
 
 target_include_directories(
     BeanChatCommon

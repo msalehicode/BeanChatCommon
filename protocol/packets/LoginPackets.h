@@ -7,7 +7,7 @@ namespace BeanChatCommon
     struct LoginRequestPacket
     {
         QString username;
-        QString identity;
+        QByteArray publicKey; //identity
 
         // Client information
         QString appVersion;      // "1.2.5"
@@ -27,7 +27,7 @@ namespace BeanChatCommon
                const LoginRequestPacket& p)
     {
         out << p.username
-            << p.identity
+            << p.publicKey
             << p.appVersion
             << p.buildType
             << p.osName
@@ -43,7 +43,7 @@ namespace BeanChatCommon
                LoginRequestPacket& p)
     {
         in >> p.username
-            >> p.identity
+            >> p.publicKey
             >> p.appVersion
             >> p.buildType
             >> p.osName
@@ -51,6 +51,31 @@ namespace BeanChatCommon
             >> p.machineName
             >> p.machineId;
 
+        return in;
+    }
+
+
+
+    struct LoginPacket
+    {
+        //used to send challange to client \
+            or signature to server
+        QByteArray payload;
+    };
+
+    inline QDataStream&
+    operator<<(QDataStream& out,
+               const LoginPacket& p)
+    {
+        out << p.payload;
+        return out;
+    }
+
+    inline QDataStream&
+    operator>>(QDataStream& in,
+               LoginPacket& p)
+    {
+        in >> p.payload;
         return in;
     }
 

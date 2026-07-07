@@ -9,6 +9,8 @@ namespace BeanChatCommon
 
         //login
         LoginRequest,
+        LoginChallenge,
+        LoginProof,
         LoginResponse,
 
 
