@@ -6,6 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core)
+if(WIN32) #install via msys2: pacman -S mingw-w64-x86_64-openssl
+    set(OPENSSL_ROOT_DIR "C:/msys64/mingw64")
+endif()
 find_package(OpenSSL REQUIRED)
 
 add_library(BeanChatCommon STATIC
