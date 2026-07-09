@@ -91,35 +91,75 @@ namespace BeanChatCommon
 
 
     //video
-    struct VideoPacket
+    struct VideoFragment
     {
-        quint64 senderId=0;
-
-        quint32 sequence=0;
-
-        QByteArray videoData;
+        quint64 senderId;
+        quint32 frameId;
+        quint16 fragmentIndex;
+        quint16 fragmentCount;
+        QByteArray payload;
     };
+
 
     inline QDataStream&
     operator<<(QDataStream& out,
-               const VideoPacket& p)
+               const VideoFragment& p)
     {
         out << p.senderId
-            << p.sequence
-            << p.videoData;
+            << p.frameId
+            << p.fragmentIndex
+            << p.fragmentCount
+            << p.payload;
 
         return out;
     }
 
     inline QDataStream&
     operator>>(QDataStream& in,
-               VideoPacket& p)
+               VideoFragment& p)
     {
-        in >> p.senderId
-            >> p.sequence
-            >> p.videoData;
+        in  >> p.senderId
+            >> p.frameId
+            >> p.fragmentIndex
+            >> p.fragmentCount
+            >> p.payload;
 
         return in;
     }
+
+
+    struct PendingFrame
+    {
+        quint16 expectedFragments = 0;
+
+        QVector<QByteArray> fragments;
+
+        int received = 0;
+    };
+
+
+
+    inline QDataStream&
+    operator<<(QDataStream& out,
+               const PendingFrame& p)
+    {
+        out << p.expectedFragments
+            << p.fragments
+            << p.received;
+
+        return out;
+    }
+
+    inline QDataStream&
+    operator>>(QDataStream& in,
+               PendingFrame& p)
+    {
+        in  >> p.expectedFragments
+            >> p.fragments
+            >> p.received;
+
+        return in;
+    }
+
 
 }
