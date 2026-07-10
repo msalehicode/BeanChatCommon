@@ -11,6 +11,7 @@ namespace BeanChatCommon
 
         // Client information
         QString appVersion;      // "1.2.5"
+        quint32 appProtocolVersion=0; //that BeanChatCommon version using, e.g 1 or 3 , 10 ...
         QString buildType;       // "Release", "Debug"
 
         // Operating system
@@ -29,6 +30,7 @@ namespace BeanChatCommon
         out << p.username
             << p.publicKey
             << p.appVersion
+            << p.appProtocolVersion
             << p.buildType
             << p.osName
             << p.osVersion
@@ -45,6 +47,7 @@ namespace BeanChatCommon
         in >> p.username
             >> p.publicKey
             >> p.appVersion
+            >> p.appProtocolVersion
             >> p.buildType
             >> p.osName
             >> p.osVersion
