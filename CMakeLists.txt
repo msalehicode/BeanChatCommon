@@ -43,6 +43,7 @@ add_library(BeanChatCommon STATIC
     protocol/Packets.h
     protocol/ProtocolVersion.h
     protocol/ProtocolLimits.h
+    protocol/commonTypes.h
 
     #packets
     protocol/packets/ChannelPackets.h

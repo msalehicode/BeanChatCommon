@@ -1,6 +1,7 @@
 #pragma once
 #include <QDataStream>
 #include <QString>
+#include "../commonTypes.h"
 
 namespace BeanChatCommon
 {
@@ -8,6 +9,7 @@ namespace BeanChatCommon
     {
         QString username;
         QByteArray publicKey; //identity
+        PresenceStatus status=PresenceStatus::Online;
 
         // Client information
         QString appVersion;      // "1.2.5"

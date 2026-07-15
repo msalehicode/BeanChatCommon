@@ -1,6 +1,8 @@
 #pragma once
 #include <QDataStream>
 
+#include "../commonTypes.h"
+
 namespace BeanChatCommon
 {
     struct UserStatusChangedPacket
@@ -160,6 +162,7 @@ namespace BeanChatCommon
         QString username;
         QString identity;
         QString avatarHash;
+        PresenceStatus status;
 
         quint64 channelId;
 

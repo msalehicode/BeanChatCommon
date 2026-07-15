@@ -11,6 +11,8 @@ namespace BeanChatCommon
         QString name;
         QString version;
         QString website;
+        int maxUsers=32;
+        int reservedSlots=1; //for admin when server is full!
         QDateTime startTime;
 
         //store server's avatarHash, if user couldn't find that hash in cached acatars would ask for avatar.
@@ -18,6 +20,7 @@ namespace BeanChatCommon
         QString avatarHash;
         QString oldAvatarHash; //when avatar changed to tell users delete old avatar
 
+        bool showOfflineUsers=true; //if it's true would read all users in server and send them to connected client as offline users. if amount of offline users exceeded than a value would just return couple chunk..
         bool operator==(const ServerInfo &other) const
         {
             return name == other.name &&
