@@ -76,6 +76,7 @@ namespace BeanChatCommon
         QString username;
         QString identity;
         QString avatarHash;
+        BeanChatCommon::Presence::Status status;
         bool muted=false;
         bool deafened=false;
         bool camera=false;
@@ -98,6 +99,7 @@ namespace BeanChatCommon
             << p.username
             << p.identity
             << p.avatarHash
+            << p.status
             << p.muted
             << p.deafened
             << p.camera
@@ -117,6 +119,7 @@ namespace BeanChatCommon
             >> p.username
             >> p.identity
             >> p.avatarHash
+            >> p.status
             >> p.muted
             >> p.deafened
             >> p.camera
@@ -162,7 +165,7 @@ namespace BeanChatCommon
         QString username;
         QString identity;
         QString avatarHash;
-        PresenceStatus status;
+        Presence::Status status;
 
         quint64 channelId;
 
@@ -188,6 +191,7 @@ namespace BeanChatCommon
             << p.username
             << p.identity
             << p.avatarHash
+            << p.status
             << p.channelId
             << p.muted
             << p.deafened
@@ -208,6 +212,7 @@ namespace BeanChatCommon
             >> p.username
             >> p.identity
             >> p.avatarHash
+            >> p.status
             >> p.channelId
             >> p.muted
             >> p.deafened

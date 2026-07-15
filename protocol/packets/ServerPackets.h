@@ -26,6 +26,8 @@ namespace BeanChatCommon
             return name == other.name &&
                    version == other.version &&
                    website == other.website &&
+                   maxUsers == other.maxUsers &&
+                   reservedSlots == other.reservedSlots &&
                    startTime == other.startTime &&
                    avatarHash == other.avatarHash &&
                    oldAvatarHash == other.oldAvatarHash;
@@ -44,6 +46,8 @@ namespace BeanChatCommon
         out << p.name
             << p.version
             << p.website
+            << p.maxUsers
+            << p.reservedSlots
             << p.avatarHash
             << p.oldAvatarHash
             << p.startTime;
@@ -57,6 +61,8 @@ namespace BeanChatCommon
         in >> p.name
             >> p.version
             >> p.website
+            >> p.maxUsers
+            >> p.reservedSlots
             >> p.avatarHash
             >> p.oldAvatarHash
             >> p.startTime;

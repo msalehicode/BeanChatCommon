@@ -1,29 +1,37 @@
 #ifndef COMMONTYPES_H
 #define COMMONTYPES_H
+#include <QObject>
 
 namespace BeanChatCommon
 {
-    enum class PresenceStatus
+    class Presence
     {
-        Unknown=0,
-        Offline,
-        Online, //default
-        Idle, //if user become inactive, server set him to idle status (only when user's status is Online or Unknown)
-        Away, //user chose to say im away
-        Busy,
-        DoNotDisturb
+        Q_GADGET
+
+    public:
+        enum Status
+        {
+            Unknown,
+            Offline,
+            Online, //default
+            Idle, //if user become inactive, server set him to idle status (only when user's status is Online or Unknown)
+            Away, //user chose to say im away
+            Busy,
+            DoNotDisturb
+        };
+        Q_ENUM(Status)
     };
 
-    static bool isValidPresenceStatus(const PresenceStatus& status)
+    static bool isValidPresenceStatus(const Presence::Status& status)
     {
         switch (status)
         {
-            case PresenceStatus::Offline:
-            case PresenceStatus::Online:
-            case PresenceStatus::Idle:
-            case PresenceStatus::Away:
-            case PresenceStatus::Busy:
-            case PresenceStatus::DoNotDisturb:
+            case Presence::Status::Offline:
+            case Presence::Status::Online:
+            case Presence::Status::Idle:
+            case Presence::Status::Away:
+            case Presence::Status::Busy:
+            case Presence::Status::DoNotDisturb:
                 return true;
         }
         return false;

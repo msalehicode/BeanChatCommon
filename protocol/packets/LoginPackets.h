@@ -9,7 +9,7 @@ namespace BeanChatCommon
     {
         QString username;
         QByteArray publicKey; //identity
-        PresenceStatus status=PresenceStatus::Online;
+        Presence::Status status=Presence::Status::Online;
 
         // Client information
         QString appVersion;      // "1.2.5"
@@ -32,6 +32,7 @@ namespace BeanChatCommon
         out << p.username
             << p.publicKey
             << p.appVersion
+            << p.status
             << p.appProtocolVersion
             << p.buildType
             << p.osName
@@ -49,6 +50,7 @@ namespace BeanChatCommon
         in >> p.username
             >> p.publicKey
             >> p.appVersion
+            >> p.status
             >> p.appProtocolVersion
             >> p.buildType
             >> p.osName
