@@ -55,6 +55,7 @@ add_library(BeanChatCommon STATIC
 
     crypto/Crypto.h
     crypto/Crypto.cpp
+    protocol/packets/FilePackets.h
 )
 
 target_link_libraries(

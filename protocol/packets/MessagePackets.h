@@ -4,23 +4,15 @@
 #include <QDataStream>
 #include <QString>
 
+#include "../commonTypes.h"
+
 namespace BeanChatCommon
 {
     struct SendMessagePacket
     {
-        enum Type
-        {
-            Text,
-            Image,
-            Video,
-            File,
-            Link,
-            Emoji
-        };
-
         QString text;
-        Type type;
-        QString mediaPath;
+        Msg::Type type;
+        quint64 attachmentId = 0;
     };
 
     inline QDataStream&
@@ -29,7 +21,7 @@ namespace BeanChatCommon
     {
         out << p.text
             << p.type
-            << p.mediaPath;
+            << p.attachmentId;
 
 
         return out;
@@ -41,7 +33,7 @@ namespace BeanChatCommon
     {
         in  >> p.text
             >> p.type
-            >> p.mediaPath;
+            >> p.attachmentId;
 
         return in;
     }
@@ -52,28 +44,18 @@ namespace BeanChatCommon
 
     struct ChatMessagePacket
     {
-        enum Type
-        {
-            Text,
-            Image,
-            Video,
-            File,
-            Link,
-            Emoji
-        };
-
-        //fill by server
+         //fill by server
         quint64 messageId;
         quint64 senderId;
         QString senderName; //sometimes user has disconnected, we don't access to his id to findout what was his name
         // quint64 channelId;
+        quint64 attachmentId = 0;
         QDateTime timestamp=QDateTime::currentDateTime();
 
 
         //fill by client
         QString text="";
-        Type type = Text;
-        QString mediaPath="";
+        Msg::Type type = Msg::Type::Text;
     };
 
     inline QDataStream&
@@ -86,7 +68,7 @@ namespace BeanChatCommon
             << p.senderName
             << p.text
             << p.type
-            << p.mediaPath
+            << p.attachmentId
             << p.timestamp;
 
 
@@ -103,7 +85,7 @@ namespace BeanChatCommon
             >> p.senderName
             >> p.text
             >> p.type
-            >> p.mediaPath
+            >> p.attachmentId
             >> p.timestamp;
 
         return in;

@@ -36,6 +36,25 @@ namespace BeanChatCommon
         }
         return false;
     }
+
+    class Msg
+    {
+        Q_GADGET
+    public:
+        enum Type
+        {
+            Text,
+            Image,
+            AnimatedImage,
+            Video,
+            Audio,
+            File,
+            Link,
+            Code,
+            Sticker
+        };
+        Q_ENUM(Type)
+    };
 }
 
 #endif // COMMONTYPES_H

@@ -8,6 +8,7 @@
 #include "packets/ServerPackets.h"
 #include "packets/UserPackets.h"
 #include "packets/UdpPacekts.h"
+#include "packets/FilePackets.h"
 
 #include <limits>
 

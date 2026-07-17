@@ -29,7 +29,23 @@ namespace BeanChatCommon
         ChannelUpdated,
         ChannelDeleted,
 
+
+        //chat
         ChatMessage,
+
+        //chat file
+        UploadFileBegin,
+        UploadFileBeginResponse,
+
+        UploadFileChunk,
+
+        UploadFileFinish,
+        UploadFileFinishResponse,
+
+        DownloadAttachment,
+        DownloadAttachmentBegin,//response
+        DownloadAttachmentChunk,
+        DownloadAttachmentFinish,
 
 
 
