@@ -79,6 +79,10 @@ namespace BeanChatCommon
         RequestServerState,
         ServerState, //response to RequestServerState
 
+        //keep TCP alive (avoid tcp close connection after being idle) sends this if didnt
+        //[IF TCP IS BEING 5MIN IDLE OS CLOSES CONNECTION)
+        IsEverythingsOk, //after a while (e.g 2min), when there was no action on server (no packet over TCP) server sends this to clients
+        YesEverythingIsOk, //client sends this in response of IsEverythingOk to server to keep TCP active ( to avoid close connection due to idle TCP)
 
         //udp codes:
         UdpLoginRequest = 100, //when user loginResponse arrived client sends this to server to register udp socket.

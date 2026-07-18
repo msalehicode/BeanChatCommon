@@ -8,10 +8,10 @@ namespace BeanChatCommon
 
         constexpr int MaxChannelNameLength = 64;
 
-        constexpr int MaxAttachmentSize = 50 * 1024 * 1024; //50 MB
+        constexpr int MaxAttachmentSize = 80 * 1024 * 1024; //80 MB
 
         constexpr int MaxMessageLength = 4096;
 
-        constexpr int MaxPacketSize = 16 * 1024 * 1024; //16MB
+        constexpr int MaxPacketSize = 30 * 1024 * 1024; //30MB
     }
 }

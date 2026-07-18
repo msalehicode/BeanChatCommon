@@ -5,6 +5,6 @@ namespace BeanChatCommon
 {
     namespace Protocol
     {
-        constexpr quint32 Version = 6;
+        constexpr quint32 Version = 7;
     }
 }
