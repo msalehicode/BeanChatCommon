@@ -2,13 +2,15 @@
 #include <QDataStream>
 #include <QString>
 
+#include "../commonTypes.h"
+
 namespace BeanChatCommon
 {
     struct CreateChannelPacket
     {
         QString name;
         QString password;
-
+        ChannelType::Type type = ChannelType::Type::Voice;
         bool saveChats;
     };
 
@@ -18,6 +20,7 @@ namespace BeanChatCommon
     {
         out << p.name
             << p.password
+            << p.type
             << p.saveChats;
 
         return out;
@@ -29,6 +32,7 @@ namespace BeanChatCommon
     {
         in >> p.name
             >> p.password
+            >> p.type
             >> p.saveChats;
 
         return in;
@@ -159,6 +163,7 @@ namespace BeanChatCommon
     {
         quint64 id;
         QString name;
+        ChannelType::Type type = ChannelType::Type::Voice;
         bool isLocked=false;
         bool saveChats=false;
     };
@@ -169,6 +174,7 @@ namespace BeanChatCommon
     {
         out << p.id
             << p.name
+            << p.type
             << p.isLocked
             << p.saveChats;
 
@@ -181,6 +187,7 @@ namespace BeanChatCommon
     {
         in >> p.id
             >> p.name
+            >> p.type
             >> p.isLocked
             >> p.saveChats;
 
@@ -223,6 +230,7 @@ namespace BeanChatCommon
     {
         quint64 id;
         QString name;
+        ChannelType::Type type;
         bool isLocked;
         bool saveChats;
     };
@@ -233,6 +241,7 @@ namespace BeanChatCommon
     {
         out << p.id
             << p.name
+            << p.type
             << p.saveChats
             << p.isLocked;
 
@@ -245,6 +254,7 @@ namespace BeanChatCommon
     {
         in >> p.id
             >> p.name
+            >> p.type
             >> p.saveChats
             >> p.isLocked;
 

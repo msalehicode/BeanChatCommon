@@ -32,6 +32,7 @@ namespace BeanChatCommon
 
         //chat
         ChatMessage,
+        ChatMessageChunk,
 
         //chat file
         UploadFileBegin,
@@ -52,6 +53,7 @@ namespace BeanChatCommon
         //join,move
         JoinChannel,
         UserJoinedChannel,
+        JoinTextChannel,
 
         MoveUser,
         UserMoved,

@@ -55,6 +55,19 @@ namespace BeanChatCommon
         };
         Q_ENUM(Type)
     };
+
+    class ChannelType
+    {
+        Q_GADGET
+    public:
+        enum Type
+        {
+            Unknown=0,
+            Voice,
+            Text
+        };
+        Q_ENUM(Type)
+    };
 }
 
 #endif // COMMONTYPES_H
