@@ -11,6 +11,10 @@ namespace BeanChatCommon
         QByteArray publicKey; //identity
         Presence::Status status=Presence::Status::Online;
 
+        //re-join previous channel (in case connection lost)
+        quint64 joinChannelId=0;
+        QString joinChannelPassword="";
+
         // Client information
         QString appVersion;      // "1.2.5"
         quint32 appProtocolVersion=0; //that BeanChatCommon version using, e.g 1 or 3 , 10 ...
@@ -33,6 +37,8 @@ namespace BeanChatCommon
             << p.publicKey
             << p.appVersion
             << p.status
+            << p.joinChannelId
+            << p.joinChannelPassword
             << p.appProtocolVersion
             << p.buildType
             << p.osName
@@ -51,6 +57,8 @@ namespace BeanChatCommon
             >> p.publicKey
             >> p.appVersion
             >> p.status
+            >> p.joinChannelId
+            >> p.joinChannelPassword
             >> p.appProtocolVersion
             >> p.buildType
             >> p.osName
