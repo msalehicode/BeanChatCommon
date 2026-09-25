@@ -172,6 +172,7 @@ namespace BeanChatCommon
         bool muted=false;
         bool deafened=false;
         bool camera=false;
+        bool isAdmin=false;
 
 
         // Client information
@@ -196,6 +197,7 @@ namespace BeanChatCommon
             << p.muted
             << p.deafened
             << p.camera
+            << p.isAdmin
             << p.appVersion
             << p.buildType
             << p.osName
@@ -217,6 +219,7 @@ namespace BeanChatCommon
             >> p.muted
             >> p.deafened
             >> p.camera
+            >> p.isAdmin
             >> p.appVersion
             >> p.buildType
             >> p.osName
@@ -325,6 +328,7 @@ namespace BeanChatCommon
         UpdateUserInfoType updateType;
         QString payloadValue;
         QByteArray paylaodData; //for avatar image.
+        quint64 targetId=0; //to change avatar for a user id. usage: change server's avatar, banner, or maybe in future change other users avatar by admin
     };
 
     inline QDataStream& operator<<(QDataStream& out,
@@ -332,7 +336,8 @@ namespace BeanChatCommon
     {
         out << p.updateType
             << p.payloadValue
-            << p.paylaodData;
+            << p.paylaodData
+            << p.targetId;
 
         return out;
     }
@@ -342,7 +347,8 @@ namespace BeanChatCommon
     {
         in >> p.updateType
             >> p.payloadValue
-            >> p.paylaodData;
+            >> p.paylaodData
+            >> p.targetId;
 
         return in;
     }

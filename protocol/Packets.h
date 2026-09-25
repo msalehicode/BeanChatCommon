@@ -21,7 +21,7 @@ namespace BeanChatCommon
         server return this code as userId and fill avatarHash, avatarData as response.
     namespace ReservedIds
     {
-        constexpr quint64 ServerAvatar =
-            std::numeric_limits<quint64>::max() - 1;
+        constexpr quint64 ServerAvatar = std::numeric_limits<quint64>::max() - 1;
+        constexpr quint64 ServerBanner = std::numeric_limits<quint64>::max() - 2;
     }
 }

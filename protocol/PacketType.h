@@ -81,10 +81,21 @@ namespace BeanChatCommon
         RequestServerState,
         ServerState, //response to RequestServerState
 
+
         //keep TCP alive (avoid tcp close connection after being idle) sends this if didnt
         //[IF TCP IS BEING 5MIN IDLE OS CLOSES CONNECTION)
         IsEverythingsOk, //after a while (e.g 2min), when there was no action on server (no packet over TCP) server sends this to clients
         YesEverythingIsOk, //client sends this in response of IsEverythingOk to server to keep TCP active ( to avoid close connection due to idle TCP)
+
+         //adminstrator
+        RequestRedeemPrivilegeToken, //user enters a privilege code to gain some permission
+        ResponseRedeemPrivilegeToken,
+
+        //server's settings
+        RequestGetServerSettings, //to ask for raw server settings if  user has permission would receive
+        ResponseGetServerSettings, //if user has permission would receive success + raw server's settings
+        RequestUpdateServerSettings, //to update server's settings
+        ServerSettingsUpdated, //to notify users server settings updated
 
         //udp codes:
         UdpLoginRequest = 100, //when user loginResponse arrived client sends this to server to register udp socket.
